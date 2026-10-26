@@ -1,4 +1,7 @@
-﻿namespace Assignment_5
+﻿using Assignment_5.StaticClasses;
+using Assignment_5.Utilities;
+
+namespace Assignment_5
 {
     internal class Program
     {
@@ -42,6 +45,143 @@
             #endregion
 
             #endregion
+
+            #region Part 02 — Practical Questions
+
+            #region 1  Object Copying
+            //StandardShipment shipment01 = new StandardShipment("123", "Electronics", 5.0m, 50.0m, new DeliveryAddress("Cairo", "123st", 10));
+            //StandardShipment shipment02 = shipment01;
+
+            //Console.WriteLine("--------Before updating shipment02-------------");
+            //Console.WriteLine("---shipment01:---");
+            //shipment01.PrintShipment();
+            //Console.WriteLine();
+            //Console.WriteLine("---shipment02:---");
+            //shipment02.PrintShipment();
+            //Console.WriteLine();
+
+
+            //shipment02.Description = "Books";
+            //shipment02.Weight = 2.0m;
+            //shipment02.Destination = new DeliveryAddress("Alexandria", "456st", 20);
+
+            //Console.WriteLine("---------After updating shipment02:------------");
+            //Console.WriteLine("---shipment01:---");
+            //shipment01.PrintShipment();
+            //Console.WriteLine();
+            //Console.WriteLine("---shipment02:---");
+            //shipment02.PrintShipment();
+            //Console.WriteLine();
+
+            //Console.WriteLine($"Hash code of shipment01: {shipment01.GetHashCode()}");
+            //Console.WriteLine($"Hash code of shipment02: {shipment02.GetHashCode()}");
+            #endregion
+
+            #region 2  Shallow Copy
+            //StandardShipment shipment01 = new StandardShipment("123", "Electronics", 5.0m, 50.0m, new DeliveryAddress("Cairo", "123st", 10));
+            //StandardShipment shipment02 = (StandardShipment)shipment01.ShallowCopy();
+
+            //Console.WriteLine("--------Before updating shipment02-------------");
+            //Console.WriteLine("---shipment01:---");
+            //shipment01.PrintShipment();
+            //Console.WriteLine();
+            //Console.WriteLine("---shipment02:---");
+            //shipment02.PrintShipment();
+            //Console.WriteLine();
+
+
+            //shipment02.Description = "Books";
+            //shipment02.Weight = 2.0m;
+            //shipment02.Destination = new DeliveryAddress("Alexandria", "456st", 20);
+
+            //Console.WriteLine("---------After updating shipment02:------------");
+            //Console.WriteLine("---shipment01:---"); //address doesnot affected because it is struct and structs are value types, so when we create a shallow copy of shipment01, the Destination property is copied by value, meaning that shipment02 has its own copy of the DeliveryAddress struct. Therefore, when we update the Destination property of shipment02, it does not affect the Destination property of shipment01.
+            //shipment01.PrintShipment();
+            //Console.WriteLine();
+            //Console.WriteLine("---shipment02:---");
+            //shipment02.PrintShipment();
+            //Console.WriteLine();
+            #endregion
+
+            #region 3  Deep Copy
+            // will be the same as shallow copy because DeliveryAddress is a struct and not a class, so it will be copied by value
+            //StandardShipment shipment01 = new StandardShipment("123", "Electronics", 5.0m, 50.0m, new DeliveryAddress("Cairo", "123st", 10));
+            //StandardShipment shipment02 = (StandardShipment)shipment01.DeepCopy();
+
+            //Console.WriteLine("--------Before updating shipment02-------------");
+            //Console.WriteLine("---shipment01:---");
+            //shipment01.PrintShipment();
+            //Console.WriteLine();
+            //Console.WriteLine("---shipment02:---");
+            //shipment02.PrintShipment();
+            //Console.WriteLine();
+
+
+            //shipment02.Description = "Books";
+            //shipment02.Weight = 2.0m;
+            //shipment02.Destination = new DeliveryAddress("Alexandria", "456st", 20);
+
+            //Console.WriteLine("---------After updating shipment02:------------");
+            //Console.WriteLine("---shipment01:---"); 
+            //shipment01.PrintShipment();
+            //Console.WriteLine();
+            //Console.WriteLine("---shipment02:---");
+            //shipment02.PrintShipment();
+            //Console.WriteLine();
+            #endregion
+
+            #region 4  Static Field 
+            //StandardShipment standardShipment = new StandardShipment("123", "Electronics", 5.0m, 50.0m, new DeliveryAddress("Cairo", "123st", 10));
+            //ExpressShipment expressShipment = new ExpressShipment("123", "Electronics", 5.0m, 50.0m, new DeliveryAddress("Cairo", "123st", 10), 10.0m);
+            //InternationalShipment internationalShipment = new InternationalShipment("123", "Electronics", 5.0m, 50.0m, new DeliveryAddress("Cairo", "123st", 10), "Egypt", 50.0m);
+            //Console.WriteLine("Total Shipments Created: " + Shipment.TotalShipmentsCreated);
+            #endregion
+
+            #region 5  Static Constructor 
+            //static constructor is called only once when the class is first accessed and called before any other constructor.
+            //StandardShipment standardShipment = new StandardShipment("123", "Electronics", 5.0m, 50.0m, new DeliveryAddress("Cairo", "123st", 10));
+            //ExpressShipment expressShipment = new ExpressShipment("123", "Electronics", 5.0m, 50.0m, new DeliveryAddress("Cairo", "123st", 10), 10.0m);
+            //InternationalShipment internationalShipment = new InternationalShipment("123", "Electronics", 5.0m, 50.0m, new DeliveryAddress("Cairo", "123st", 10), "Egypt", 50.0m);
+            //Console.WriteLine("Total Shipments Created: " + Shipment.TotalShipmentsCreated);
+            #endregion
+
+            #region 6  Static Method
+            //StandardShipment standardShipment = new StandardShipment("123", "Electronics", 5.0m, 50.0m, new DeliveryAddress("Cairo", "123st", 10));
+            //ExpressShipment expressShipment = new ExpressShipment("123", "Electronics", 5.0m, 50.0m, new DeliveryAddress("Cairo", "123st", 10), 10.0m);
+            //InternationalShipment internationalShipment = new InternationalShipment("123", "Electronics", 5.0m, 50.0m, new DeliveryAddress("Cairo", "123st", 10), "Egypt", 50.0m);
+            //Console.WriteLine("Total Shipments Created: " + Shipment.GetTotalShipmentsCreated());
+            #endregion
+
+            #region 7  Static Class
+            DeliveryUtilities.PrintSystemTitle();
+            #endregion
+
+            #region 8  Extension Methods
+            //StandardShipment standardShipment = new StandardShipment("123", "Electronics", 5.0m, 50.0m, new DeliveryAddress("Cairo", "123st", 10));
+            //Console.WriteLine(standardShipment.GetSummary());
+            //Console.WriteLine(standardShipment.IsDelivered());
+            #endregion
+
+            #region 9  Partial Shipment Class 10  Partial Method
+            //StandardShipment standardShipment = new StandardShipment("123", "Electronics", 5.0m, 50.0m, new DeliveryAddress("Cairo", "123st", 10));
+            //ExpressShipment expressShipment = new ExpressShipment("456", "Electronics", 5.0m, 50.0m, new DeliveryAddress("Cairo", "123st", 10), 10.0m);
+            //InternationalShipment internationalShipment = new InternationalShipment("789", "Electronics", 5.0m, 50.0m, new DeliveryAddress("Cairo", "123st", 10), "Egypt", 50.0m);
+
+            //Console.WriteLine(standardShipment.GetTrackingStatus());
+            //Console.WriteLine(expressShipment.GetTrackingStatus());
+            //Console.WriteLine(internationalShipment.GetTrackingStatus());
+
+            //standardShipment.UpdateTrackingStatus();
+            //standardShipment.UpdateTrackingStatus();
+            //expressShipment.UpdateTrackingStatus();
+
+            //Console.WriteLine(standardShipment.GetTrackingStatus());
+            //Console.WriteLine(expressShipment.GetTrackingStatus());
+            //Console.WriteLine(internationalShipment.GetTrackingStatus());
+            #endregion
+
+            #endregion
+
         }
     }
 }
